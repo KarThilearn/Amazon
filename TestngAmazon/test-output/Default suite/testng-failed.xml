@@ -3,12 +3,11 @@
 <suite parallel="none" name="Failed suite [Default suite]">
   <test parallel="none" name="Default test(failed)">
     <classes>
-      <class name="TestngAmazon.Amazon">
+      <class name="TestngAmazon.ProductSearch">
         <methods>
-          <include name="Invoking"/>
-          <include name="SigningHomepage"/>
+          <include name="RedmiMobile"/>
         </methods>
-      </class> <!-- TestngAmazon.Amazon -->
+      </class> <!-- TestngAmazon.ProductSearch -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
