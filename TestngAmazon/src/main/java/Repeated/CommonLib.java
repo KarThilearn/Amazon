@@ -30,7 +30,7 @@ public String UserEntered = "span#nav-link-accountList-nav-line-1";
 public String ProductSearch = "input#twotabsearchtextbox";
 public String SearchButton = "input#nav-search-submit-button";
 public String RedmiMobiles = "span.a-size-medium.a-color-base.a-text-normal";
-
+public String RedmiMobPrice = "span.a-price-whole";
 
 
 
@@ -94,7 +94,6 @@ public String RedmiMobiles = "span.a-size-medium.a-color-base.a-text-normal";
 		XSSFSheet sh = wbk.getSheetAt(0);
 		FileOutputStream outputStream=new FileOutputStream(fle);
 	}
-	
 	
 	
 }
