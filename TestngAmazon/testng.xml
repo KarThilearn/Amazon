@@ -3,7 +3,8 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="TestngAmazon.Amazon"/>
+      <class name="TestngAmazon.SingingAmazon"/>
+      <class name="TestngAmazon.ProductSearch"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
