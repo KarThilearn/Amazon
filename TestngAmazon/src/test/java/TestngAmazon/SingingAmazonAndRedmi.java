@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import Repeated.CommonLib;
@@ -18,7 +19,7 @@ public class SingingAmazonAndRedmi extends CommonLib{
 	
 	CommonLib lib = new CommonLib();
 	
-	@BeforeTest
+	@BeforeSuite
 	public void Invoking() {
 		lib.InvokeBrowser();
 		driver.get(URL);
