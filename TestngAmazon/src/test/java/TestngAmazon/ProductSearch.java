@@ -14,7 +14,7 @@ import Repeated.CommonLib;
 
 public class ProductSearch extends CommonLib {
 
-	@Test
+	@Test(dependsOnMethods={"Invoking","SigningHomepage"})
 	public void RedmiMobile() throws IOException {
 		CssSendKeysElement(ProductSearch, "Redmi 10+ Pro");
 		CssClickElements(SearchButton);
