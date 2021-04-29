@@ -1,9 +1,19 @@
 package Repeated;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CommonLib {
@@ -18,6 +28,14 @@ public String Password = "input#ap_password";
 public String Signing = "input#signInSubmit";
 public String UserEntered = "span#nav-link-accountList-nav-line-1";
 public String ProductSearch = "input#twotabsearchtextbox";
+public String SearchButton = "input#nav-search-submit-button";
+public String RedmiMobiles = "span.a-size-medium.a-color-base.a-text-normal";
+
+
+
+
+
+
 
 	public WebDriver InvokeBrowser() {
 		System.setProperty("webdriver.chrome.driver", "C:\\Driver\\Chrome\\chromedriver.exe");
@@ -55,4 +73,32 @@ public String ProductSearch = "input#twotabsearchtextbox";
 		String AmazonText = driver.findElement(By.cssSelector(Element)).getText();
 		return AmazonText;
 	}
+	
+	public List<String> listofproducts(String Element) {
+		
+		List<WebElement> listofprod = driver.findElements(By.cssSelector(Element));
+ 		List<String> Noofproducts = new ArrayList<>();
+ 		
+ 		
+ 		for(WebElement ProductsList : listofprod) {
+			Noofproducts.add(ProductsList.getText());
+	}
+		return Noofproducts;
+	}
+	
+	public void ExcelConnection() throws IOException {
+		
+		File fle = new File("C:/Users/MK/Desktop/TestData.xlsx");
+		FileInputStream Fin = new FileInputStream(fle);
+		XSSFWorkbook wbk = new XSSFWorkbook(Fin);
+		XSSFSheet sh = wbk.getSheetAt(0);
+		FileOutputStream outputStream=new FileOutputStream(fle);
+	}
+	
+	
+	
 }
+
+
+
+
