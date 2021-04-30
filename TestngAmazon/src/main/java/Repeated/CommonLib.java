@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import org.testng.annotations.Test;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -15,6 +16,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.ChartLocation;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.beust.jcommander.Parameters;
 
 public class CommonLib {
 	
@@ -32,8 +40,9 @@ public String SearchButton = "input#nav-search-submit-button";
 public String RedmiMobiles = "span.a-size-medium.a-color-base.a-text-normal";
 public String RedmiMobPrice = "span.a-price-whole";
 
-
-
+public ExtentHtmlReporter htmlReporter;
+public ExtentReports extent;
+public ExtentTest test;
 
 
 
@@ -95,6 +104,26 @@ public String RedmiMobPrice = "span.a-price-whole";
 		FileOutputStream outputStream=new FileOutputStream(fle);
 	}
 	
+	
+	public void extentReports() {
+		
+		htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir")+"/testoutput/testoutput.html");
+		
+	    extent = new ExtentReports();
+	    extent.attachReporter(htmlReporter);
+	    
+	    extent.setSystemInfo("OS", "Windows");
+        extent.setSystemInfo("Browser", "Chrome");
+        
+        htmlReporter.config().setChartVisibilityOnOpen(true);
+        htmlReporter.config().setDocumentTitle("Extent Report Demo");
+        htmlReporter.config().setReportName("Test Report");
+        htmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
+        htmlReporter.config().setTheme(Theme.STANDARD);
+        htmlReporter.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
+	}
+	
+	}
 	
 }
 
