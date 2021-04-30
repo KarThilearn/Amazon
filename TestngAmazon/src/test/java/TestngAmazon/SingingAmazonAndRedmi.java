@@ -9,6 +9,7 @@ import java.util.List;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -18,12 +19,11 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import Repeated.CommonLib;
 import junit.framework.Assert;
 
-
 public class SingingAmazonAndRedmi extends CommonLib{
 	
 	CommonLib lib = new CommonLib();
 	
-	@BeforeSuite
+	@BeforeTest
 	public void Invoking() {
 		lib.InvokeBrowser();
 		test.log(Status.PASS, MarkupHelper.createLabel("Invoke Browser", ExtentColor.GREEN));
@@ -46,7 +46,7 @@ public class SingingAmazonAndRedmi extends CommonLib{
 		test.log(Status.PASS, MarkupHelper.createLabel("Logged Success", ExtentColor.GREEN));
 	}
 	
-	@Test(dependsOnMethods={"Invoking","SigningHomepage"})
+	@Test(dependsOnMethods={"SigningHomepage"})
 	public void RedmiMobile() throws IOException {
 		CssSendKeysElement(ProductSearch, "Redmi 10+ Pro");
 		CssClickElements(SearchButton);
