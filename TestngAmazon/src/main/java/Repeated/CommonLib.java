@@ -44,9 +44,7 @@ public ExtentHtmlReporter htmlReporter;
 public ExtentReports extent;
 public ExtentTest test;
 
-
-
-	public WebDriver InvokeBrowser() {
+public WebDriver InvokeBrowser() {
 		System.setProperty("webdriver.chrome.driver", "C:\\Driver\\Chrome\\chromedriver.exe");
 		driver = new ChromeDriver();  
 		driver.manage().deleteAllCookies();
@@ -124,9 +122,3 @@ public ExtentTest test;
 	}
 	
 	}
-	
-}
-
-
-
-
