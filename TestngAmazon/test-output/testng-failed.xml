@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite parallel="none" name="Failed suite [Default suite]">
-  <test parallel="none" name="Default test(failed)">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestngAmazon.ProductSearch">
+      <class name="TestngAmazon.SingingAmazonAndRedmi">
         <methods>
+          <include name="Invoking"/>
+          <include name="extentreport"/>
+          <include name="endTest"/>
+          <include name="SigningHomepage"/>
           <include name="RedmiMobile"/>
         </methods>
-      </class> <!-- TestngAmazon.ProductSearch -->
+      </class> <!-- TestngAmazon.SingingAmazonAndRedmi -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
