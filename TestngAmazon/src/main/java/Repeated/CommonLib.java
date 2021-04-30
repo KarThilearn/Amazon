@@ -92,16 +92,7 @@ public WebDriver InvokeBrowser() {
 	}
 		return Noofproducts;
 	}
-	
-	public void ExcelConnection() throws IOException {
-		
-		File fle = new File("C:/Users/MK/Desktop/TestData.xlsx");
-		FileInputStream Fin = new FileInputStream(fle);
-		XSSFWorkbook wbk = new XSSFWorkbook(Fin);
-		XSSFSheet sh = wbk.getSheetAt(0);
-		FileOutputStream outputStream=new FileOutputStream(fle);
-	}
-	
+
 	
 	public void extentReports() {
 		
