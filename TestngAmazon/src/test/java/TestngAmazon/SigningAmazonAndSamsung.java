@@ -8,6 +8,9 @@ import java.util.List;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -60,7 +63,7 @@ public class SigningAmazonAndSamsung extends CommonLib {
 	}
 
 	@Test
-	public void SigningHomepage() throws InterruptedException {
+	public void SigningHomepage() throws InterruptedException, IOException {
 
 		CssClickElements(AccountLists);
 
@@ -72,13 +75,15 @@ public class SigningAmazonAndSamsung extends CommonLib {
 		test.log(Status.PASS, "Signing Clicked");
 		Assert.assertEquals(CssGetText(UserEntered), "Hello, karthi");
 		test.log(Status.PASS, "Logged Success");
+		Screenshot("Login");
 	}
 
 	@Test(dependsOnMethods = { "SigningHomepage" })
 	public void RedmiMobile() throws IOException {
 		CssSendKeysElement(ProductSearch, "samsung note 10 lite");
 		CssClickElements(SearchButton);
-		test.log(Status.PASS, "Redmi 10+ Pro is entered in search");
+		test.log(Status.PASS, "Samsung 10 is entered in search");
+		Screenshot("Samsung");
 		File fle = new File("C:/Users/MK/Desktop/TestData1.xlsx");
 		FileInputStream Fin = new FileInputStream(fle);
 		XSSFWorkbook wbk = new XSSFWorkbook(Fin);
@@ -88,6 +93,7 @@ public class SigningAmazonAndSamsung extends CommonLib {
 		List<String> NomofProdPrice = listofproducts(RedmiMobPrice);
 		// Map<String,String> ProdPrice = new HashMap<String,String>();
 		test.log(Status.PASS, "List of Redmi 10+ Pro is available");
+		Screenshot("ListofMobiles");
 		for (int i = 0; i < Nomofproducts.size(); i++) {
 			// ProdPrice.put(Nomofproducts.get(i),NomofProdPrice.get(i));
 			String Value = Nomofproducts.get(i);
@@ -101,11 +107,12 @@ public class SigningAmazonAndSamsung extends CommonLib {
 			FileOutputStream outputStream = new FileOutputStream(fle);
 			wbk.write(outputStream);
 			outputStream.close();
-			test.log(Status.PASS, "Redmi 10+ Pro is entered in Excel");
+			test.log(Status.PASS, "Samsung 10 is entered in Excel");
+			
 		}
 	}
 
-	@AfterClass
+	@AfterSuite
 	public static void endTest() {
 		extent.flush();
 	}

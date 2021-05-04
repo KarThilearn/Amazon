@@ -9,6 +9,8 @@ import java.util.List;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -26,6 +28,7 @@ public class SingingAmazonAndRedmi extends CommonLib {
 
 	CommonLib lib = new CommonLib();
 
+	
 	ExtentHtmlReporter htmlReporter;
 	static ExtentReports extent;
 	ExtentTest test;
@@ -51,16 +54,17 @@ public class SingingAmazonAndRedmi extends CommonLib {
 	}
 
 	@BeforeTest
-	public void Invoking() {
+	public void Invoking() throws IOException {
 		lib.InvokeBrowser();
 		test.log(Status.PASS, "Navigated to the specified URL");
 		test.log(Status.PASS, "Invoke Browser");
 		driver.get(URL);
 		test.log(Status.PASS, "URL is sent to Browser");
+		
 	}
 
 	@Test
-	public void SigningHomepage() throws InterruptedException {
+	public void SigningHomepage() throws InterruptedException, IOException {
 
 		CssClickElements(AccountLists);
 
@@ -72,6 +76,7 @@ public class SingingAmazonAndRedmi extends CommonLib {
 		test.log(Status.PASS, "Signing Clicked");
 		Assert.assertEquals(CssGetText(UserEntered), "Hello, karthi");
 		test.log(Status.PASS, "Logged Success");
+		Screenshot("Login");
 	}
 
 	@Test(dependsOnMethods = { "SigningHomepage" })
@@ -79,6 +84,7 @@ public class SingingAmazonAndRedmi extends CommonLib {
 		CssSendKeysElement(ProductSearch, "Redmi 10+ Pro");
 		CssClickElements(SearchButton);
 		test.log(Status.PASS, "Redmi 10+ Pro is entered in search");
+		Screenshot("Redmi");
 		File fle = new File("C:/Users/MK/Desktop/TestData.xlsx");
 		FileInputStream Fin = new FileInputStream(fle);
 		XSSFWorkbook wbk = new XSSFWorkbook(Fin);
@@ -88,6 +94,7 @@ public class SingingAmazonAndRedmi extends CommonLib {
 		List<String> NomofProdPrice = listofproducts(RedmiMobPrice);
 		// Map<String,String> ProdPrice = new HashMap<String,String>();
 		test.log(Status.PASS, "List of Redmi 10+ Pro is available");
+		Screenshot("ListofRedmi");
 		for (int i = 0; i < Nomofproducts.size(); i++) {
 			// ProdPrice.put(Nomofproducts.get(i),NomofProdPrice.get(i));
 			String Value = Nomofproducts.get(i);
@@ -105,7 +112,7 @@ public class SingingAmazonAndRedmi extends CommonLib {
 		}
 	}
 
-	@AfterClass
+	@AfterSuite
 	public static void endTest() {
 		extent.flush();
 	}
